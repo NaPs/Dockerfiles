@@ -1,0 +1,107 @@
+var conf = {};
+
+conf.user = "kiwi";
+conf.group = "kiwi";
+conf.log = "kiwi.log";
+
+conf.servers = [];
+
+conf.servers.push({
+    port:   7778,
+    address: "0.0.0.0"
+});
+
+conf.outgoing_address = {{ outgoing_address|json }};
+
+conf.identd = {
+    enabled: false,
+    port: 113,
+    address: "0.0.0.0"
+};
+
+conf.public_http = "client/";
+conf.max_client_conns = {{ max_client_conns|json }};
+conf.max_server_conns = {{ max_server_conns|json }};
+conf.default_encoding = {{ default_encoding|json }};
+conf.default_gecos = {{ default_gecos|json }};
+
+conf.client_plugins = [];
+conf.module_dir = "../server_modules/";
+conf.modules = [];
+
+
+// WebIRC passwords enabled for this server
+conf.webirc_pass = {{ webirc_secret|json }};
+
+// Some IRCDs require the clients IP via the username/ident
+conf.ip_as_username = {{ ip_as_username|json }};
+
+conf.reject_unauthorised_certificates = {{ reject_unauthorized_ssl_certificates|json }};
+
+
+conf.http_proxies = {{ http_proxies|json }};
+conf.http_proxy_ip_header = {{ http_proxy_ip_header|json }};
+conf.http_base_path = "/kiwi";
+
+conf.socks_proxy = {};
+conf.socks_proxy.enabled = false;
+conf.socks_proxy.all = false;
+conf.socks_proxy.proxy_hosts = [];
+conf.socks_proxy.address = '127.0.0.1';
+conf.socks_proxy.port = 1080;
+conf.socks_proxy.user = null;
+conf.socks_proxy.pass = null;
+
+conf.quit_message = {{ default_quit_message|json }};
+conf.client = {
+    server:      {{ default_server|json }},
+    port:        {{ default_port|json }},
+    ssl:         {{ default_enable_ssl|json }},
+    channel:     {{ default_channel|json }},
+    channel_key: {{ default_channel_key|json }},
+    nick:        {{ default_nick|json }},
+    settings: {
+        theme: 'relaxed',
+        channel_list_style: 'tabs',
+        scrollback: 250,
+        show_joins_parts: true,
+        show_timestamps: false,
+        use_24_hour_timestamps: true,
+        mute_sounds: false,
+        show_emoticons: true,
+        count_all_activity: true
+    },
+    window_title: {{ default_window_title|json }}
+};
+
+conf.client_themes = {{ available_themes|json }};
+
+{% if restrict_server %}
+conf.restrict_server = {{ restrict_server|json }};
+{% endif %}
+
+{% if restrict_port %}
+conf.restrict_server_port = {{ restrict_port|json }};
+{% endif %}
+
+{% if restrict_ssl %}
+conf.restrict_server_ssl = {{ restrict_ssl|json }};
+{% endif %}
+
+{% if restrict_channel %}
+conf.restrict_server_channel = {{ restrict_channel|json }};
+{% endif %}
+
+{% if restrict_channel_key %}
+conf.restrict_server_channel_key = {{ restrict_channel_key|json }};
+{% endif %}
+
+{% if restrict_password %}
+conf.restrict_server_password = {{ restrict_password|json }};
+{% endif %}
+
+{% if restrict_nick %}
+conf.restrict_server_nick = {{ restrict_nick|json }};
+{% endif %}
+
+module.exports.production = conf;

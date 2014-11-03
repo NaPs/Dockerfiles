@@ -22,7 +22,7 @@ parser = argparse.ArgumentParser(description='Roundcube Launcher')
 
 parser.add_argument('--hosts', default=[], nargs='*', help='List of imap servers on which to connect.')
 parser.add_argument('--product-name', default='Roundcube Webmail')
-parser.add_argument('--plugins', default=['archive', 'zipdownload'], help='List of plugins to enable.')
+parser.add_argument('--plugins', default=['archive', 'zipdownload'], nargs='*', help='List of plugins to enable.')
 parser.add_argument('--set', type=mapping, default=[], nargs='*', help='Arbitrary define an option in config file.')
 
 if __name__ == '__main__':

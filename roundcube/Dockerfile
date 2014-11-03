@@ -24,5 +24,8 @@ RUN chmod +x /launcher.py
 
 EXPOSE 80
 
+VOLUME /var/www/logs
+VOLUME /data
+
 CMD []
 ENTRYPOINT ["/launcher.py"]

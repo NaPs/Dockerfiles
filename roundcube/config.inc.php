@@ -2,7 +2,7 @@
 
 $config = array();
 $config['db_dsnw'] = 'sqlite:////data/roundcube.db';
-$config['smtp_server'] = '%h';
+$config['smtp_server'] = 'tls://%h';
 $config['smtp_port'] = 25;
 $config['smtp_user'] = '%u';
 $config['smtp_pass'] = '%p';

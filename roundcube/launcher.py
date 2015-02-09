@@ -39,4 +39,4 @@ if __name__ == '__main__':
     with open(OUTPUT_FILENAME, 'w') as foutput:
         foutput.write(template.render({'options': options}))
 
-    os.execl('/usr/sbin/apache2', 'apache2', '-D', 'FOREGROUND')
+    os.execl('/usr/sbin/apache2ctl', 'apache2ctl', '-D', 'FOREGROUND')

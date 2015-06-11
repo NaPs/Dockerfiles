@@ -8,7 +8,7 @@ RUN echo "deb http://ftp.debian.org/debian wheezy-backports main" >> /etc/apt/so
     && apt-get -y -qq --force-yes install git curl python python-jinja2 nodejs nodejs-legacy \
     && apt-get clean
 
-RUN curl https://www.npmjs.org/install.sh | clean=yes sh
+RUN curl https://www.npmjs.com/install.sh | clean=yes sh
 
 ADD launcher.py /
 RUN chmod +x /launcher.py

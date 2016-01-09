@@ -1,7 +1,7 @@
 FROM debian:wheezy
 MAINTAINER Antoine Millet <antoine@inaps.org>
 
-ENV GRAFANA_VERSION 2.0.0-beta3
+ENV GRAFANA_VERSION 2.6.0
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y -qq --force-yes update \
@@ -28,4 +28,5 @@ VOLUME /var/logs
 VOLUME /grafana
 
 CMD []
-ENTRYPOINT ["/usr/sbin/grafana-server", "-homepath=/usr/share/grafana/", "-config=/grafana/grafana.ini"]
+WORKDIR /usr/share/grafana/
+ENTRYPOINT ["/usr/sbin/grafana-server", "-config=/grafana/grafana.ini", "cfg:default.paths.logs=/grafana/data/", "cfg:default.paths.data=/grafana/logs/"]

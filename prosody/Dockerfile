@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Antoine Millet <antoine@inaps.org>
 
 ENV DEBIAN_FRONTEND noninteractive

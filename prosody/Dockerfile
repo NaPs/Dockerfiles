@@ -4,7 +4,7 @@ MAINTAINER Antoine Millet <antoine@inaps.org>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y -qq --force-yes update \
-    && apt-get -y -qq --force-yes install adduser python prosody \
+    && apt-get -y -qq --force-yes install adduser python prosody prosody-modules \
     && apt-get clean
 
 ADD prosody.cfg.lua /default_prosody.cfg.lua

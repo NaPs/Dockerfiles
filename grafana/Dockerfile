@@ -1,14 +1,14 @@
-FROM debian:wheezy
+FROM debian:stretch
 MAINTAINER Antoine Millet <antoine@inaps.org>
 
-ENV GRAFANA_VERSION 2.6.0
+ENV GRAFANA_VERSION 4.6.3
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y -qq --force-yes update \
     && apt-get -y -qq --force-yes install adduser libfontconfig \
     && apt-get clean
 
-ADD https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb /tmp/grafana.deb
+ADD https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_${GRAFANA_VERSION}_amd64.deb  /tmp/grafana.deb
 RUN dpkg -i /tmp/grafana.deb
 
 RUN mkdir /grafana && mkdir /grafana/data
